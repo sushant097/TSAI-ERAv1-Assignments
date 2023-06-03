@@ -1,4 +1,4 @@
-# Session 5: PyTorch 101
+# Session 5: Introduction to PyTorch
 ## Introduction:
 Here in this session we learn about PyTorch, basic concepts of PyTorch Tensor, Implemented a toy Neural Network to train on MNIST dataset.
 
