@@ -13,13 +13,13 @@
 
 ![image](images/network_architecture.png)
 
-**Highlights of this Squeeze and Excite Network Architecture:**
+**Major points of this Squeeze and Excite Network Architecture:**
 
 * Network has total 9 layers.
 
-* Logic used for designing layers is CRB (Convolution-Relu-Batch Normalization).
+* Fundamental block used for designing layers is  `Convolution-Relu-Batch Normalization`.
 
-* Dropout of 0.05% is used after Batch Normalization layer. This is MNIST, seems like greater dropout makes harder to get test accuracy within the constraing i.e. 99.4%
+* Dropout of 0.05% is used after Batch Normalization layer. This is MNIST, seems like greater dropout makes harder to get test accuracy within the constraint i.e. 99.4%
 
 * Dropout & Batch Normalization not used after 1x1 convolution layer as observed that there should be some gap to get good test results. 
 
@@ -40,7 +40,7 @@
 
 * Trainable parameters for network are 16,564 (less than 20k).
 
-## 99.4% test/validation accuracy from 15th epoch.
+## 99.4% test/validation accuracy from 18th epoch.
 
 ![image](images/training_details.png)
 
