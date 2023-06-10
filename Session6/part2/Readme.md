@@ -11,7 +11,40 @@
 
 ### Network Summary
 
-![image](images/network_architecture.png)
+```
+----------------------------------------------------------------
+        Layer (type)               Output Shape         Param #
+================================================================
+            Conv2d-1           [-1, 16, 26, 26]             160
+       BatchNorm2d-2           [-1, 16, 26, 26]              32
+           Dropout-3           [-1, 16, 26, 26]               0
+            Conv2d-4           [-1, 32, 24, 24]           4,640
+       BatchNorm2d-5           [-1, 32, 24, 24]              64
+           Dropout-6           [-1, 32, 24, 24]               0
+            Conv2d-7            [-1, 8, 24, 24]             264
+         MaxPool2d-8            [-1, 8, 12, 12]               0
+            Conv2d-9           [-1, 16, 10, 10]           1,168
+      BatchNorm2d-10           [-1, 16, 10, 10]              32
+          Dropout-11           [-1, 16, 10, 10]               0
+           Conv2d-12             [-1, 32, 8, 8]           4,640
+      BatchNorm2d-13             [-1, 32, 8, 8]              64
+          Dropout-14             [-1, 32, 8, 8]               0
+           Conv2d-15             [-1, 16, 8, 8]             528
+        MaxPool2d-16             [-1, 16, 4, 4]               0
+           Conv2d-17             [-1, 32, 2, 2]           4,640
+        AvgPool2d-18             [-1, 32, 1, 1]               0
+           Linear-19                   [-1, 10]             330
+================================================================
+Total params: 16,562
+Trainable params: 16,562
+Non-trainable params: 0
+----------------------------------------------------------------
+Input size (MB): 0.00
+Forward/backward pass size (MB): 0.81
+Params size (MB): 0.06
+Estimated Total Size (MB): 0.87
+----------------------------------------------------------------
+```
 
 **Major points of this Squeeze and Excite Network Architecture:**
 
