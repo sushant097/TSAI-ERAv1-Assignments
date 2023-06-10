@@ -1,7 +1,7 @@
 
 # Part 2
 
-## MNIST CLassifier using Convolutional Neural Network with 99.4% Validation accuracy
+## MNIST CLassifier using Convolutional Neural Network with 99.4% Validation accuracy and parameters less than 20K.
 
 ### Constraints :
 
@@ -15,18 +15,18 @@
 ----------------------------------------------------------------
         Layer (type)               Output Shape         Param #
 ================================================================
-            Conv2d-1           [-1, 16, 26, 26]             160
-       BatchNorm2d-2           [-1, 16, 26, 26]              32
-           Dropout-3           [-1, 16, 26, 26]               0
-            Conv2d-4           [-1, 32, 24, 24]           4,640
+            Conv2d-1            [-1, 8, 26, 26]              80
+       BatchNorm2d-2            [-1, 8, 26, 26]              16
+           Dropout-3            [-1, 8, 26, 26]               0
+            Conv2d-4           [-1, 32, 24, 24]           2,336
        BatchNorm2d-5           [-1, 32, 24, 24]              64
            Dropout-6           [-1, 32, 24, 24]               0
             Conv2d-7            [-1, 8, 24, 24]             264
          MaxPool2d-8            [-1, 8, 12, 12]               0
-            Conv2d-9           [-1, 16, 10, 10]           1,168
-      BatchNorm2d-10           [-1, 16, 10, 10]              32
-          Dropout-11           [-1, 16, 10, 10]               0
-           Conv2d-12             [-1, 32, 8, 8]           4,640
+            Conv2d-9           [-1, 32, 10, 10]           2,336
+      BatchNorm2d-10           [-1, 32, 10, 10]              64
+          Dropout-11           [-1, 32, 10, 10]               0
+           Conv2d-12             [-1, 32, 8, 8]           9,248
       BatchNorm2d-13             [-1, 32, 8, 8]              64
           Dropout-14             [-1, 32, 8, 8]               0
            Conv2d-15             [-1, 16, 8, 8]             528
@@ -35,14 +35,14 @@
         AvgPool2d-18             [-1, 32, 1, 1]               0
            Linear-19                   [-1, 10]             330
 ================================================================
-Total params: 16,562
-Trainable params: 16,562
+Total params: 19,970
+Trainable params: 19,970
 Non-trainable params: 0
 ----------------------------------------------------------------
 Input size (MB): 0.00
-Forward/backward pass size (MB): 0.81
-Params size (MB): 0.06
-Estimated Total Size (MB): 0.87
+Forward/backward pass size (MB): 0.72
+Params size (MB): 0.08
+Estimated Total Size (MB): 0.80
 ----------------------------------------------------------------
 ```
 
@@ -70,10 +70,9 @@ Estimated Total Size (MB): 0.87
 
 * Fully connected (FC) layer is the last layer of network.
 
+* Trainable parameters for network are 19,970 (less than 20k).
 
-* Trainable parameters for network are 16,564 (less than 20k).
-
-## 99.4% test/validation accuracy from 18th epoch.
+## 99.4% test/validation accuracy from 14th epoch and maximum test accuracy got is 99.430%.
 
 ![image](images/training_details.png)
 
