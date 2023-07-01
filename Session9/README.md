@@ -1,87 +1,101 @@
 # Classification of CIFAR-10 dataset
 
 **Objective:**
-* To achieve at least 70% accuracy with applying normalization like Group Normalization, Layer Normalization and Batch Normalization.
-* Experiment the effect of different normalization techniques applied to the convolutional layers of Neural Network.
+* 
 
-**Some Constraints**
-1. Less than 50k parameters.
-2. At most 20 epochs. 
+**Some constraints:**
+1. Achieve 85% accuracy
+2. Total RF must be more than 44
+
+3. One of the layers must use Depthwise Separable Convolution and one of the layers must use Dilated Convolution
+
+4. Use GAP (compulsory)
+
+5. Use albumentation library and apply:
+
+   5.1. horizontal flip
+
+   5.2. shiftScaleRotate
+
+   5.3. coarseDropout (max_holes = 1, max_height=16px, max_width=16, min_holes = 1, min_height=16px, min_width=16px, fill_value=(mean of your dataset), mask_fill_value = None)
+
+6. Achieve 85% accuracy
+
+7. Total Params to be less than 200k
 
 
 **My Network Summary**
 * Batch Size: 512
-* Total Parameters: 37,098
+* Total Parameters: 134,722
 * Image Augmentation applied
-    * ColorJitter
-    * RandomHorizontalFlip(p=0.3)
-    * RandomRotation((-10., 10.))
+    * horizontal flip
+    * Shift Scale Rotate
+    * Coarse Dropout
 
 * Dropout as regularization with probability or 0.02
-* 70% as target accuracy obtained in all cases.
-
+* 85% as target accuracy obtained in all cases.
 
 ```
----------------------------------------------------------------
+----------------------------------------------------------------
         Layer (type)               Output Shape         Param #
 ================================================================
             Conv2d-1           [-1, 10, 32, 32]             270
               ReLU-2           [-1, 10, 32, 32]               0
-         GroupNorm-3           [-1, 10, 32, 32]              20
+       BatchNorm2d-3           [-1, 10, 32, 32]              20
            Dropout-4           [-1, 10, 32, 32]               0
-            Conv2d-5           [-1, 10, 32, 32]             900
-              ReLU-6           [-1, 10, 32, 32]               0
-         GroupNorm-7           [-1, 10, 32, 32]              20
-           Dropout-8           [-1, 10, 32, 32]               0
-            Conv2d-9           [-1, 16, 32, 32]             160
-        MaxPool2d-10           [-1, 16, 16, 16]               0
-           Conv2d-11           [-1, 24, 16, 16]           3,456
-             ReLU-12           [-1, 24, 16, 16]               0
-        GroupNorm-13           [-1, 24, 16, 16]              48
-          Dropout-14           [-1, 24, 16, 16]               0
-           Conv2d-15           [-1, 16, 16, 16]           3,456
-             ReLU-16           [-1, 16, 16, 16]               0
-        GroupNorm-17           [-1, 16, 16, 16]              32
-          Dropout-18           [-1, 16, 16, 16]               0
-           Conv2d-19           [-1, 32, 16, 16]           4,608
-             ReLU-20           [-1, 32, 16, 16]               0
-        GroupNorm-21           [-1, 32, 16, 16]              64
-          Dropout-22           [-1, 32, 16, 16]               0
-
+            Conv2d-5           [-1, 24, 32, 32]           2,160
+              ReLU-6           [-1, 24, 32, 32]               0
+       BatchNorm2d-7           [-1, 24, 32, 32]              48
+           Dropout-8           [-1, 24, 32, 32]               0
+            Conv2d-9           [-1, 32, 30, 30]           6,912
+           Conv2d-10           [-1, 64, 30, 30]          18,432
+             ReLU-11           [-1, 64, 30, 30]               0
+      BatchNorm2d-12           [-1, 64, 30, 30]             128
+          Dropout-13           [-1, 64, 30, 30]               0
+           Conv2d-14           [-1, 32, 32, 32]           2,048
+             ReLU-15           [-1, 32, 32, 32]               0
+      BatchNorm2d-16           [-1, 32, 32, 32]              64
+          Dropout-17           [-1, 32, 32, 32]               0
+           Conv2d-18           [-1, 32, 17, 17]           4,096
+           Conv2d-19           [-1, 64, 17, 17]          18,432
+             ReLU-20           [-1, 64, 17, 17]               0
+      BatchNorm2d-21           [-1, 64, 17, 17]             128
+          Dropout-22           [-1, 64, 17, 17]               0
+           Conv2d-23           [-1, 96, 17, 17]          55,296
+             ReLU-24           [-1, 96, 17, 17]               0
+      BatchNorm2d-25           [-1, 96, 17, 17]             192
+          Dropout-26           [-1, 96, 17, 17]               0
+           Conv2d-27             [-1, 64, 9, 9]          24,576
+           Conv2d-28             [-1, 64, 9, 9]             576
+             ReLU-29             [-1, 64, 9, 9]               0
+      BatchNorm2d-30             [-1, 64, 9, 9]             128
+          Dropout-31             [-1, 64, 9, 9]               0
+           Conv2d-32           [-1, 16, 11, 11]           1,024
+             ReLU-33           [-1, 16, 11, 11]               0
+      BatchNorm2d-34           [-1, 16, 11, 11]              32
+          Dropout-35           [-1, 16, 11, 11]               0
+        AvgPool2d-36             [-1, 16, 1, 1]               0
+           Conv2d-37             [-1, 10, 1, 1]             160
 ================================================================
-Total params: 37,098
-Trainable params: 37,098
+Total params: 134,722
+Trainable params: 134,722
 Non-trainable params: 0
 ----------------------------------------------------------------
 Input size (MB): 0.01
-Forward/backward pass size (MB): 1.57
-Params size (MB): 0.14
-Estimated Total Size (MB): 1.72
+Forward/backward pass size (MB): 5.78
+Params size (MB): 0.51
+Estimated Total Size (MB): 6.30
 ----------------------------------------------------------------
 ```
 
 # Training loss graph
 
-
-### Training loss graph - Batch Normalization 
-![image](https://github.com/sushant097/Deep-Learning-Paper-Scratch-Implementation/assets/30827903/3e290d4d-cc02-49e7-8664-f868d679d9ad)
+![image](https://github.com/mapillary/inplace_abn/assets/30827903/0dd8d704-7f76-4fb7-ace2-ee49b89ce692)
 
 
-### Training loss graph - Group Normalization 
-![image](https://github.com/sushant097/Deep-Learning-Paper-Scratch-Implementation/assets/30827903/c486ae9c-49e4-4c8e-888e-c90b290a608e)
+
+## Mispredicted Image 
+![image](https://github.com/mapillary/inplace_abn/assets/30827903/b9dc3353-6cf1-4011-9fa9-3066781e72de)
 
 
-### Training loss graph - Layer Normalization 
 
-![image](https://github.com/sushant097/Deep-Learning-Paper-Scratch-Implementation/assets/30827903/fd01bc31-185f-407d-857a-8be05e5ff4b0)
-
-
-## Mispredicted Image - Batch Normalization 
-![image](https://github.com/sushant097/Deep-Learning-Paper-Scratch-Implementation/assets/30827903/a7e64396-990f-42a7-bc52-8a36b2dfec64)
-
-
-## Mispredicted Image - Group Normalization 
-![image](https://github.com/sushant097/Deep-Learning-Paper-Scratch-Implementation/assets/30827903/3bc7a50e-cdd7-4f41-a0dd-d73406b01d23)
-
-## Mispredicted Image - Layer Normalization 
-![image](https://github.com/sushant097/Deep-Learning-Paper-Scratch-Implementation/assets/30827903/7477b687-0c06-4676-a70d-728cd8a5a651)
