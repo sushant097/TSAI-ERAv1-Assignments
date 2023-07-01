@@ -88,6 +88,30 @@ Estimated Total Size (MB): 6.30
 ----------------------------------------------------------------
 ```
 
+**Transformations**
+```
+train_transforms = A.Compose(
+    [
+        A.HorizontalFlip(p=0.1),
+        A.ShiftScaleRotate(shift_limit=0.05, scale_limit=0.05, rotate_limit=15, p=0.5),
+        A.CoarseDropout (max_holes = 1, max_height=16, max_width=16, min_holes = 1, min_height=16, min_width=16, fill_value=.45, mask_fill_value = None),
+        A.RGBShift(r_shift_limit=10, g_shift_limit=10, b_shift_limit=15, p=0.4),
+        A.RandomBrightnessContrast(p=0.5),
+        A.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
+        ToTensorV2()
+    ]
+)
+test_transforms = A.Compose(
+    [
+    A.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
+    ToTensorV2()
+    ]
+)
+```
+
+## 85% Test Accuracy achieved consistently after 43th epochs
+![image](https://github.com/mapillary/inplace_abn/assets/30827903/34f60f9e-7b0d-43d6-a0cc-e764b49dddf2)
+
 # Training loss graph
 
 ![image](https://github.com/mapillary/inplace_abn/assets/30827903/0dd8d704-7f76-4fb7-ace2-ee49b89ce692)
