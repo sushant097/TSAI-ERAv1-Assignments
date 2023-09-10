@@ -1,0 +1,5 @@
+torch
+torchvision
+datasets
+tokenizers
+pytorch_lightning
