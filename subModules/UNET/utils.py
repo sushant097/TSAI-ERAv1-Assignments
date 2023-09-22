@@ -2,7 +2,7 @@ import torch
 import matplotlib.pyplot as plt
 import numpy as np
 
-def visualise_data(dataset):
+def visualize_datasample(dataset):
     dataiter = iter(dataset)
 
     ind = 0
