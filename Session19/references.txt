@@ -1,0 +1,7 @@
+Text to Image retrieval with clip: https://www.kaggle.com/code/dongdori/clip-for-text-to-image-retrieval
+
+Search Between object of an image with clip, YOLO: https://github.com/mehrdad-dev/SBO
+		https://www.kaggle.com/code/mehrdadmohammadian/search-between-the-objects-in-an-image-clip-yolo
+
+
+Use this to install clip: pip install git+https://github.com/openai/CLIP.git

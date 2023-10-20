@@ -26,7 +26,7 @@ class CIFAR10DataModule(pl.LightningDataModule):
         self.num_workers = num_workers
 
     def prepare_data(self):
-        pass
+        pass 
 
     def setup(self,stage):
         self.train_ds = CIFAR10Dataset(

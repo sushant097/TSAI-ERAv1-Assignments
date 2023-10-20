@@ -22,3 +22,4 @@ Variational autoencoders (VAEs) operate by making assumptions about how the late
 ![vae](https://www.unite.ai/wp-content/uploads/2020/09/variational-1024x193.png)
 
 <br>
+
